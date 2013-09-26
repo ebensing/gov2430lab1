@@ -6,7 +6,7 @@ This is repo for the first lab in Gov 2430 (Fall 2013).
 Setup
 ==========================
 
-1. Download and unpack the "Metadata by Users - CSV files, one for each User"
+1. Download and unpack the "Metadata by Users - CSV files, one for each User" from [here](http://foreverdata.org/1009/index.html)
 2. The .csv files need to live in the same directory as process.py
 
 Usage
