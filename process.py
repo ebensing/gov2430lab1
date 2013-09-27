@@ -6,6 +6,7 @@ from collections import defaultdict
 import json
 import operator
 import sys
+import csv
 
 loc = "."
 
@@ -18,15 +19,18 @@ if not exists("counts.json") or not exists("userCounts.json"):
 
   for userFile in files:
     f = open(userFile, 'r')
+    csvR = csv.reader(f)
     print userFile
+    seen={}
 
-    for line in f:
-      arr = line.split(',')
-      name=arr[1]
-      words = arr[3].replace("Subject:","").split(" ")
-      for w in words:
-        counts[w] += 1
-        userCounts[name][w] += 1
+    for arr in csvR:
+      if arr[7] not in seen:
+        seen[arr[7]] = 1
+        name=arr[1]
+        words = arr[3].replace("Subject:","").split(" ")
+        for w in words:
+          counts[w] += 1
+          userCounts[name][w] += 1
   
   countsFile=open('counts.json', 'w')
   userCountsFile=open('usercounts.json', 'w')
